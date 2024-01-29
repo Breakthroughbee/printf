@@ -1,0 +1,7 @@
+Declare an index 
+We used to move through format
+Using an if statement to check for %
+When a % is true add one to index
+If next char is % print %
+If next c print char
+if next is s print string
