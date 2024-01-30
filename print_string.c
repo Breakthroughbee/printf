@@ -19,3 +19,36 @@ int print_string(char *str)
 	}
 	return (i);
 }
+
+/**
+ * print_int - function to print a string
+ * @n: int
+ *
+ * Return: void
+ */
+
+int print_int(int n)
+{
+	char a_str[20];
+	int x = 0;
+	int y;
+
+	if (n == 0)
+		return (0);
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+	while (n > 0)
+	{
+		a_str[x] = '0' + n % 10;
+		y++;
+		n /= 10;
+	}
+	for (y = x - 1; y >= 0; y--)
+	{
+		_putchar(a_str[y]);
+	}
+	return (x);
+}
