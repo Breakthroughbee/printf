@@ -1,6 +1,17 @@
 #include "main.h"
 #include <stdio.h>
+#include <unistd.h>
 
+/**
+ * printchar - prints a character
+ * @c: character to print
+ *
+ * Return: the char
+ */
+int printchar(char c)
+{
+	return (_putchar(c));
+}
 /**
  * print_string - Prints strings
  * @str: String to be printed
@@ -9,15 +20,19 @@
 
 int print_string(char *str)
 {
-	int i;
+	int;
+	int count = 0;
 
 	i = 0;
+	if (str[i] == '\0')
+		return (-1);
 	while (str[i] != '\0')
 	{
 		_putchar(str[i]);
 		i++;
+		count++;
 	}
-	return (i);
+	return (count);
 }
 
 /**

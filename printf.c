@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
  * _printf - A function that emulates printf functionalities
@@ -8,50 +10,41 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i, x;
-	int count;
+	int x = 0;
 	va_list args;
 
-	count = 0;
 	va_start(args, format);
-	i = 0;
-	while (format[i] != '\0')
+	if (*format == '\0')
+		return (-1);
+	while (*format != '\0')
 	{
-		if (format[i] != '%')
+		if (*format == '%')
 		{
-			_putchar(format[i]);
-			count++;
+			format++;
+			switch (*format)
+			{
+				case 'c':
+					x += printchar(va_arg(args, int));
+					break;
+				case 's':
+					x += print_string(va_arg(args, char *));
+					break;
+				case '%':
+					x += write(1, "%", 1);
+					break;
+					case 'd':
+					case 'i':
+					x += print_int(va_arg(args, int));
+					break;
+					default:
+					break;
+			}
 		}
 		else
 		{
-			if (format[i + 1] == '%')
-			{
-				_putchar('%');
-				count++;
-			}
-			else if (format[i + 1] == 'c')
-			{
-				_putchar(va_arg(args, int));
-				count++;
-			}
-			else if (format[i + 1] == 's')
-			{
-				x = print_string(va_arg(args, char*));
-				count = x + count;
-			}
-			else if (format[i + 1] == 'd')
-			{
-				x = print_int(va_arg(args, int));
-				count++;
-			}
-			else if (format[i + 1] == 'i')
-			{
-				x = print_int(va_arg(args, int));
-				count++;
-			}
-			i++;
+			x += write(1, format, 1);
 		}
-		i++;
+		format++;
 	}
 	va_end(args);
 	return (count);
