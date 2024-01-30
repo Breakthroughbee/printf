@@ -6,5 +6,4 @@
 
 int _printf(const char *format, ...);
 char _putchar(char c);
-
 #endif
