@@ -6,8 +6,7 @@
  * @c: Char to be printed
  * Return: Returns the char
  */
-
-char _putchar(char c)
+int _putchar(int c)
 {
 	return (write(1, &c, 1));
 }

@@ -20,10 +20,9 @@ int printchar(char c)
 
 int print_string(char *str)
 {
-	int;
+	int i = 0;
 	int count = 0;
 
-	i = 0;
 	if (str[i] == '\0')
 		return (-1);
 	while (str[i] != '\0')
@@ -58,7 +57,7 @@ int print_int(int n)
 	while (n > 0)
 	{
 		a_str[x] = '0' + n % 10;
-		y++;
+		x++;
 		n /= 10;
 	}
 	for (y = x - 1; y >= 0; y--)
