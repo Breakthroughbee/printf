@@ -8,11 +8,12 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i, x, count;
+	unsigned int i, x;
+	int count;
 	va_list args;
 
 	count = 0;
-	va_start(args, *format);
+	va_start(args, format);
 	i = 0;
 	while (format[i] != '\0')
 	{
@@ -42,5 +43,6 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
+	va_end(args);
 	return (count);
 }
